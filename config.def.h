@@ -6,6 +6,10 @@ static const unsigned int gappx     = 15;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
+static const char scratchpadname[]  = "scratchpad";
+// static const char *scratchpadcmd[]  = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
+static const char *scratchpadcmd[]  = { "alacritty", "-t", scratchpadname, "-d", "160", "45", NULL };
+
 /* Mononoki Nerd Font must be installed from AUR nerd-fonts-complete.
  * Otherwise, your default font will be Hack which is found in the standard
  * Arch repos and is listed as a dependency for this build. JoyPixels is also
@@ -23,9 +27,9 @@ static const char col_inactive_win[]	= "#444444";
 // font color
 static const char col_font[]       		= "#ffffff";
 // current tag and current window font color
-static const char col_curr_win[]       	= "#e1acff";
+static const char col_curr_win[]       	= "#ffffff";
 // top bar second color and active window border color
-static const char col_curr_win_border[] = "#005577";
+static const char col_curr_win_border[] = "#aa0000";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_font, col_bg, col_inactive_win },
@@ -56,6 +60,7 @@ static const Layout layouts[] = {
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+	// { "[C]",      centeredmaster },
 };
 
 /* key definitions */
@@ -120,6 +125,7 @@ static Key keys[] = {
 	// TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY|ShiftMask,             XK_r,      quit,           {1} },
+	{ MODKEY|ShiftMask,             XK_x,  	   togglescratch,  {.v = scratchpadcmd } },
 };
 
 /* button definitions */
