@@ -1,13 +1,21 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int gappx     = 15;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10" };
-static const char dmenufont[]       = "monospace:size=10";
+/* Mononoki Nerd Font must be installed from AUR nerd-fonts-complete.
+ * Otherwise, your default font will be Hack which is found in the standard
+ * Arch repos and is listed as a dependency for this build. JoyPixels is also
+ * a hard dependency and makes colored fonts and emojis possible.
+ */
+static const char *fonts[]            = {"Mononoki Nerd Font:size=9:antialias=true:autohint=true",
+                                         "Hack:size=8:antialias=true:autohint=true",
+                                         "JoyPixels:size=10:antialias=true:autohint=true"
+										};
+
 // background color
 static const char col_bg[]       		= "#222222";
 // inactive window border color
@@ -25,7 +33,8 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "", "", "", "", "" };
+// static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
