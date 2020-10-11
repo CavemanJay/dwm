@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 3;        /* border pixel of windows */
+static const unsigned int borderpx  = 5;        /* border pixel of windows */
 static const unsigned int gappx     = 15;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
@@ -11,7 +11,7 @@ static const int topbar             = 1;        /* 0 means bottom bar */
  * Arch repos and is listed as a dependency for this build. JoyPixels is also
  * a hard dependency and makes colored fonts and emojis possible.
  */
-static const char *fonts[]            = {"Mononoki Nerd Font:size=9:antialias=true:autohint=true",
+static const char *fonts[]            = {"Mononoki Nerd Font:size=12:antialias=true:autohint=true",
                                          "Hack:size=8:antialias=true:autohint=true",
                                          "JoyPixels:size=10:antialias=true:autohint=true"
 										};
@@ -114,11 +114,12 @@ static Key keys[] = {
 	TAGKEYS(                        XK_3,                      2)
 	TAGKEYS(                        XK_4,                      3)
 	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
-	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
+	// TAGKEYS(                        XK_6,                      5)
+	// TAGKEYS(                        XK_7,                      6)
+	// TAGKEYS(                        XK_8,                      7)
+	// TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_r,      quit,           {1} },
 };
 
 /* button definitions */
