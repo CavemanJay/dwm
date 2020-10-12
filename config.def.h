@@ -5,13 +5,12 @@ static const unsigned int borderpx  = 5;        /* border pixel of windows */
 static const unsigned int gappx     = 15;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
-static const unsigned int systrayspacing = 2;   /* systray spacing */
+static const unsigned int systrayspacing = 10;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char scratchpadname[]  = "scratchpad";
-// static const char *scratchpadcmd[]  = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
 static const char *scratchpadcmd[]  = { "alacritty", "-t", scratchpadname, "-d", "160", "45", NULL };
 
 /* Mononoki Nerd Font must be installed from AUR nerd-fonts-complete.
@@ -52,6 +51,7 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "xdman-Main",  NULL,       NULL,       1 << 8,       1,           -1 },
 };
 
 /* layout(s) */
@@ -139,7 +139,6 @@ static Key keys[] = {
 
 	// DWM management
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-	{ MODKEY|ShiftMask,             XK_r,      quit,           {1} },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
 
 	// Media keys
@@ -148,6 +147,13 @@ static Key keys[] = {
 	{ 0, XF86XK_AudioMute, 	   		   		   spawn,          SHCMD("$HOME/scripts/audio/volume.zsh mute") },
 	{ 0, XF86XK_AudioRaiseVolume, 	   		   spawn,          SHCMD("$HOME/scripts/audio/volume.zsh up") },
 	{ 0, XF86XK_AudioLowerVolume, 	   		   spawn,          SHCMD("$HOME/scripts/audio/volume.zsh down") },
+
+	// Dmenu scripts run with ctrl alt
+	{ ControlMask|ALT,              XK_e, 	   spawn,          SHCMD("$HOME/scripts/dmenu/dmenu-edit-configs.sh") },
+	{ ControlMask|ALT,              XK_w, 	   spawn,          SHCMD("$HOME/scripts/dmenu/dmenu-set-wallpaper.sh") },
+	{ ControlMask|ALT,              XK_v, 	   spawn,          SHCMD("$HOME/scripts/dmenu/dmenu-show-vms.sh") },
+	{ ControlMask|ALT,              XK_s, 	   spawn,          SHCMD("$HOME/scripts/wallpaper/safe_wallpaper.sh") },
+
 
 	// Applications
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
@@ -172,4 +178,3 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-
