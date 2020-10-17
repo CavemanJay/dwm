@@ -162,7 +162,7 @@ static Key keys[] = {
 	// Applications
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY|ShiftMask,             XK_x,  	   togglescratch,  {.v = scratchpadcmd } },
-	{ MODKEY,             			XK_x, 	   spawn,          {.v = termcmd } },
+	{ MODKEY,             			XK_x, 	   spawn,          SHCMD("st -c 'St'") },
 	{ MODKEY,             			XK_e, 	   spawn,          SHCMD("st -e ranger") },
 };
 
