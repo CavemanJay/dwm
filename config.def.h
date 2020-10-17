@@ -11,7 +11,7 @@ static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char scratchpadname[]  = "scratchpad";
-static const char *scratchpadcmd[]  = { "alacritty", "-t", scratchpadname, "-d", "160", "45", NULL };
+static const char *scratchpadcmd[]  = { "st", "-t", scratchpadname, "-g", "160x45", NULL };
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 
 /* Mononoki Nerd Font must be installed from AUR nerd-fonts-complete.
@@ -86,7 +86,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "" };
-static const char *termcmd[]  = { "alacritty", NULL };
+static const char *termcmd[]  = { "st -c 'St'", NULL };
 
 static const int gapDelta = 3;
 
@@ -143,6 +143,7 @@ static Key keys[] = {
 	// DWM management
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
+	{ MODKEY,             			XK_l,      spawn,      	   SHCMD("i3lock") },
 
 	// Media keys
 	{ 0, XF86XK_MonBrightnessUp, 	   		   spawn,          SHCMD("xbacklight -inc 5") },
@@ -162,7 +163,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY|ShiftMask,             XK_x,  	   togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,             			XK_x, 	   spawn,          {.v = termcmd } },
-	{ MODKEY,             			XK_e, 	   spawn,          SHCMD("alacritty -e ranger") },
+	{ MODKEY,             			XK_e, 	   spawn,          SHCMD("st -e ranger") },
 };
 
 /* button definitions */
